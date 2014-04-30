@@ -187,6 +187,12 @@
     else{
         datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     }
+    for (NSString *key in self.rowDescriptor.cellConfig) {
+        id value = self.rowDescriptor.cellConfig[key];
+        if ([key hasPrefix:@"datePicker"]) {
+            [datePicker setValue:value forKey:[key componentsSeparatedByString:@"."].lastObject];
+        }
+    }
 }
 
 #pragma mark - Properties
